@@ -7,9 +7,21 @@ import {
   TextInput,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../redux/slices/todoSlice";
 
 const InputForm = () => {
+  const [currentValue, setCurrentValue] = useState("");
+  const dispatch = useDispatch();
+
+  const handleSubmit = () => {
+    if (currentValue !== "") {
+      dispatch(addTodo(currentValue));
+      setCurrentValue("");
+    }
+  };
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -18,9 +30,15 @@ const InputForm = () => {
       <TextInput
         style={styles.inpuField}
         placeholder="할 일을 작성해주세요!!"
+        value={currentValue}
+        onChangeText={setCurrentValue}
+        // PC로 Enter 키를 눌러을때 실행
+        onSubmitEditing={handleSubmit}
       />
       <Pressable style={styles.addButton}>
-        <Text style={styles.addButtonText}>+</Text>
+        <Text style={styles.addButtonText} onPress={handleSubmit}>
+          +
+        </Text>
       </Pressable>
     </KeyboardAvoidingView>
   );
