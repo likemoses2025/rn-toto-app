@@ -1,11 +1,8 @@
 {
   "folders": [
-	{
-		"path": "."
-	},
-	{
-		"path": "../rn-todo-app-master"
-	}
-],
+    {
+      "path": "."
+    }
+  ],
   "settings": {}
 }
