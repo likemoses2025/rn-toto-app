@@ -6,6 +6,7 @@ import LoginScreen from "./screens/LoginScreen";
 import { store } from "./redux/store";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
+import app from "./firebase";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -15,12 +16,12 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
-            name='Login'
+            name="Login"
             component={LoginScreen}
             options={{ headerShown: false }}
           />
           <Stack.Screen
-            name='Main'
+            name="Main"
             component={MainScreen}
             options={{ headerShown: false }}
           />
